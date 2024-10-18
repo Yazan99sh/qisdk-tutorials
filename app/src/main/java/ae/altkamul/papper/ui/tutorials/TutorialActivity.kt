@@ -3,7 +3,7 @@
  * See COPYING for the license
  */
 
-package com.softbankrobotics.qisdktutorials.ui.tutorials
+package ae.altkamul.papper.ui.tutorials
 
 import android.graphics.Rect
 import android.os.Bundle
@@ -12,8 +12,8 @@ import android.view.View
 import android.view.ViewTreeObserver
 
 import com.aldebaran.qi.sdk.design.activity.RobotActivity
-import com.softbankrobotics.qisdktutorials.model.data.TutorialLevel
-import com.softbankrobotics.qisdktutorials.utils.Constants
+import ae.altkamul.papper.model.data.TutorialLevel
+import ae.altkamul.papper.utils.Constants
 import kotlinx.android.synthetic.main.activity_take_picture_tutorial.*
 import kotlinx.android.synthetic.main.tutorial_toolbar.*
 
