@@ -6,7 +6,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion '29.0.3'
     defaultConfig {
-        applicationId "com.softbankrobotics.qisdktutorials"
+        applicationId "ae.altkamul.papper"
         minSdkVersion 23
         targetSdkVersion 29
         versionCode VERSION_CODE.toInteger()

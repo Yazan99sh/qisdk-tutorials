@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Qi SDK Tutorials</string>
+    <string name="app_name">Altkamul Papper</string>
 
     <!-- Autonomous abilities -->
     <string name="hold">Hold</string>
@@ -87,7 +87,7 @@
     <string name="content_description_add_button">Add button</string>
     <string name="content_description_emotion_view">Emotion view</string>
     <string name="content_description_assign_button">Assign button</string>
-    <string name="content_description_sbr_logo">SoftBank Robotics logo</string>
+    <string name="content_description_rentrobot_logo">Rent Robot Logo</string>
     <string name="content_description_picture_view">Picture view</string>
     <string name="content_description_delete_button">Delete button</string>
     <string name="content_description_face_image">Face image</string>

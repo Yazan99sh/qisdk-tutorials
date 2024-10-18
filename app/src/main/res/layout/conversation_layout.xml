@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.softbankrobotics.qisdktutorials.ui.tutorialtoolbar.TutorialToolbar
+    <ae.altkamul.papper.ui.tutorialtoolbar.TutorialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.softbankrobotics.qisdktutorials.ui.conversation.ConversationView
+    <ae.altkamul.papper.ui.conversation.ConversationView
         style="@style/RecyclerView"
         android:id="@+id/conversation_view"
         android:layout_width="match_parent"

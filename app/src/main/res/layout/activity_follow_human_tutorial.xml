@@ -8,7 +8,7 @@
     tools:layout_editor_absoluteY="0dp"
     tools:layout_editor_absoluteX="0dp">
 
-    <com.softbankrobotics.qisdktutorials.ui.tutorialtoolbar.TutorialToolbar
+    <ae.altkamul.papper.ui.tutorialtoolbar.TutorialToolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
         app:layout_constraintStart_toEndOf="@+id/follow_button"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <com.softbankrobotics.qisdktutorials.ui.conversation.ConversationView
+    <ae.altkamul.papper.ui.conversation.ConversationView
         style="@style/RecyclerView"
         android:id="@+id/conversation_view"
         android:layout_width="0dp"
