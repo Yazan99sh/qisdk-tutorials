@@ -12,6 +12,7 @@ import com.aldebaran.qi.sdk.design.activity.RobotActivity
 import com.aldebaran.qi.sdk.design.activity.conversationstatus.SpeechBarDisplayStrategy
 import ae.altkamul.papper.R
 import ae.altkamul.papper.ui.categories.CategoriesActivity
+import ae.altkamul.papper.ui.idle.IdleActivity
 
 import java.util.Timer
 import java.util.TimerTask
@@ -36,7 +37,7 @@ class SplashScreenActivity : RobotActivity() {
         timer = Timer()
         timer?.schedule(object : TimerTask() {
             override fun run() {
-                goToCategories()
+                goToIdlePage()
             }
         }, 1500)
     }
@@ -46,8 +47,8 @@ class SplashScreenActivity : RobotActivity() {
         super.onPause()
     }
 
-    private fun goToCategories() {
-        val intent = Intent(this, CategoriesActivity::class.java)
+    private fun goToIdlePage() {
+        val intent = Intent(this, IdleActivity::class.java)
         startActivity(intent)
 
         finish()
