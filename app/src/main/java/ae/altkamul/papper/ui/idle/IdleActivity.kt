@@ -1,6 +1,8 @@
 package ae.altkamul.papper.ui.idle
 
 import ae.altkamul.papper.R
+import ae.altkamul.papper.ui.welcomemessage.WelcomeMessageActivity
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +18,7 @@ import com.aldebaran.qi.sdk.design.activity.conversationstatus.SpeechBarDisplayS
 class IdleActivity : RobotActivity(), RobotLifecycleCallbacks {
     val TAG: String = "IDLE"
     private var humanAwareness: HumanAwareness? = null
+    private var videoView: VideoView ? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         QiSDK.register(this, this)
@@ -23,24 +26,28 @@ class IdleActivity : RobotActivity(), RobotLifecycleCallbacks {
         setSpeechBarDisplayStrategy(SpeechBarDisplayStrategy.OVERLAY)
         setContentView(R.layout.activity_idle)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
-        val videoView: VideoView = findViewById(R.id.idle_video)
+        videoView = findViewById(R.id.idle_video)
         val uriVideo : String = "android.resource://" + packageName + "/raw/" + R.raw.a
-        videoView.setVideoURI(Uri.parse(uriVideo))
-        videoView.setOnCompletionListener {
-            videoView.start() // Restart the video when it completes
+        videoView!!.setVideoURI(Uri.parse(uriVideo))
+        videoView!!.setOnCompletionListener {
+            videoView!!.start() // Restart the video when it completes
         }
-        videoView.start()
+        videoView!!.start()
     }
 
     override fun onRobotFocusGained(qiContext: QiContext?) {
         humanAwareness = qiContext!!.humanAwareness
         humanAwareness!!.addOnHumansAroundChangedListener {
-
+            Log.i(TAG, "Humans around: ${it.size}")
+            if (it.isNotEmpty()) {
+                goToWelcomeMessage()
+            }
         }
     }
 
     override fun onRobotFocusLost() {
         humanAwareness!!.removeAllOnHumansAroundChangedListeners()
+        videoView!!.stopPlayback()
     }
 
     override fun onRobotFocusRefused(reason: String?) {
@@ -51,5 +58,10 @@ class IdleActivity : RobotActivity(), RobotLifecycleCallbacks {
         // Unregister the RobotLifecycleCallbacks for this Activity.
         QiSDK.unregister(this, this)
         super.onDestroy()
+    }
+    private fun goToWelcomeMessage() {
+        val intent = Intent(this, WelcomeMessageActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

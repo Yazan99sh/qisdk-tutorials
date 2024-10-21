@@ -1,0 +1,3 @@
+[submodule "android-outline-textview"]
+	path = android-outline-textview
+	url = git@github.com:biomorgoth/android-outline-textview.git

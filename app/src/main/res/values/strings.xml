@@ -95,5 +95,9 @@
     <string name="content_description_robot_icon">Robot icon</string>
     <string name="content_description_back_button">Back button</string>
 
+    <string name="welcome_message">Good Morning Mr.Yazan , Welcome at Altkamul Altiqani Computers</string>
+    <string name="papper_logo_description">Papper Logo</string>
+    <string name="welcome_message_text_view">Good Morning, Welcome to Altkamul</string>
+
 
 </resources>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.welcomemessage.WelcomeMessageActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ACDAE6"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/papper_logo_welcome_message"
+            android:layout_width="175dp"
+            android:layout_height="175dp"
+            android:contentDescription="@string/papper_logo_description"
+            android:src="@drawable/ic_img_icon_pepper" />
+
+        <TextView
+            android:id="@+id/welcome_message_text_view"
+            android:layout_width="390dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:shadowColor="#000000"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:shadowRadius="1"
+            android:text="Welcome Brothers and Sisters At Altkamul"
+            android:textAlignment="center"
+            android:textColor="#F6F6F6"
+            android:textSize="40sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="8dp">
+
+            <!-- Microphone icon on the left -->
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_weight="0"
+                android:gravity="bottom"
+                android:src="@drawable/voice_icon" />
+
+            <!-- Centered Lottie animation -->
+            <FrameLayout
+                android:layout_width="700dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="700dp"
+                    android:layout_height="100dp"
+                    android:gravity="center"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/audio_wave" />
+            </FrameLayout>
+
+            <!-- Empty space on the right -->
+            <Space
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

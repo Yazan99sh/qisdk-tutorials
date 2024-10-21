@@ -11,9 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ui.welcomemessage.WelcomeMessageActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.idle.IdleActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity android:name=".ui.splashscreen.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
