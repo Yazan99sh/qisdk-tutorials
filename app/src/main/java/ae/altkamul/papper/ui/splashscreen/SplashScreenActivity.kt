@@ -13,6 +13,7 @@ import com.aldebaran.qi.sdk.design.activity.conversationstatus.SpeechBarDisplayS
 import ae.altkamul.papper.R
 import ae.altkamul.papper.ui.categories.CategoriesActivity
 import ae.altkamul.papper.ui.idle.IdleActivity
+import ae.altkamul.papper.ui.welcomemessage.WelcomeMessageActivity
 
 import java.util.Timer
 import java.util.TimerTask
@@ -48,7 +49,8 @@ class SplashScreenActivity : RobotActivity() {
     }
 
     private fun goToIdlePage() {
-        val intent = Intent(this, IdleActivity::class.java)
+        // IdleActivity
+        val intent = Intent(this, WelcomeMessageActivity::class.java)
         startActivity(intent)
 
         finish()
