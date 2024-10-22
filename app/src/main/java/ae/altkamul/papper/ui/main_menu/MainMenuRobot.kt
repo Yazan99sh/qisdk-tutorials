@@ -14,12 +14,12 @@ import com.aldebaran.qi.sdk.RobotLifecycleCallbacks
 import com.aldebaran.qi.sdk.builder.SayBuilder
 import ae.altkamul.papper.R
 
-private const val TAG = "WelcomeMessageRobot"
+private const val TAG = "MainMenuRobot"
 
 /**
  * The robot for the tutorial categories.
  */
-internal class WelcomeMessageRobot(private val presenter: MainMenuContract.Presenter) :
+internal class MainMenuRobot(private val presenter: MainMenuContract.Presenter) :
     MainMenuContract.Robot, RobotLifecycleCallbacks {
 
     override fun register(activity: MainMenuActivity) {
@@ -31,6 +31,33 @@ internal class WelcomeMessageRobot(private val presenter: MainMenuContract.Prese
     }
 
     override fun onRobotFocusGained(qiContext: QiContext) {
+        val sentence = qiContext.resources.getString(introSentenceRes())
+        val words = sentence.split(" ")
+        val sentences = mutableListOf<String>()
+        var currentSentence = StringBuilder()
+        for (i in words.indices) {
+            currentSentence.append(words[i]).append(" ")
+            if ((i + 1) % 13 == 0 || i == words.size - 1) {
+                sentences.add(currentSentence.toString().trim())
+                currentSentence = StringBuilder()
+            }
+        }
+        // Iterate through each sentence, say it and update the UI
+        for (sentence in sentences) {
+            // Update the UI (Assuming you have a method to update the UI)
+            presenter.updateWelcomeMessage(sentence)
+
+            // Create a Say action for the robot to speak the sentence
+            val say = SayBuilder.with(qiContext)
+                .withText(sentence)
+                .build()
+
+            // Run the Say action (this is blocking, so it will wait until the robot finishes speaking)
+            say.run()
+
+            // You can add a delay here if you need a pause between sentences
+            // Thread.sleep(1000) // Wait for 1 second before saying the next sentence (optional)
+        }
     }
 
     override fun onRobotFocusLost() {
@@ -43,6 +70,6 @@ internal class WelcomeMessageRobot(private val presenter: MainMenuContract.Prese
 
     @StringRes
     private fun introSentenceRes(): Int {
-        return R.string.welcome_message
+        return R.string.extinsions_welcome_message
     }
 }

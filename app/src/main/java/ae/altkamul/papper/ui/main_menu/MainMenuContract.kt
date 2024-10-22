@@ -11,11 +11,13 @@ package ae.altkamul.papper.ui.main_menu
 internal interface MainMenuContract {
 
     interface View {
+        fun updateWelcomeMessage(sentence: String)
     }
 
     interface Presenter {
         fun bind(view: View)
         fun unbind()
+        fun updateWelcomeMessage(sentence: String)
     }
 
     interface Robot {

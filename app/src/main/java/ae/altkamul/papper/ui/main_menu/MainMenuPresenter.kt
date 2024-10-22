@@ -19,4 +19,8 @@ internal class MainMenuPresenter : MainMenuContract.Presenter {
         this.view = null
     }
 
+    override fun updateWelcomeMessage(sentence: String) {
+        view?.updateWelcomeMessage(sentence)
+    }
+
 }
