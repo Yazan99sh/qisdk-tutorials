@@ -14,6 +14,7 @@ import ae.altkamul.papper.R
 import ae.altkamul.papper.ui.categories.CategoriesActivity
 import ae.altkamul.papper.ui.idle.IdleActivity
 import ae.altkamul.papper.ui.main_menu.MainMenuActivity
+import ae.altkamul.papper.ui.registration.RegistrationActivity
 import ae.altkamul.papper.ui.welcomemessage.WelcomeMessageActivity
 
 import java.util.Timer
@@ -53,7 +54,7 @@ class SplashScreenActivity : RobotActivity() {
         // IdleActivity
         // WelcomeMessageActivity
         // MainMenuActivity
-        val intent = Intent(this, MainMenuActivity::class.java)
+        val intent = Intent(this, RegistrationActivity::class.java)
         startActivity(intent)
 
         finish()

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Shadow layer -->
+    <item>
+        <shape>
+            <solid android:color="#000000" /> <!-- Black shadow color -->
+            <corners android:radius="25dp" /> <!-- Rounded corners -->
+        </shape>
+    </item>
+
+    <!-- Main button layer -->
+    <item
+        android:right="3dp"
+        android:bottom="3dp"> <!-- Position the button slightly over the shadow -->
+        <shape>
+            <solid android:color="#00BBF1" /> <!-- Green background -->
+            <corners android:radius="24dp" /> <!-- Rounded corners -->
+            <stroke android:width="1.5dp" android:color="#FFFFFF" />
+        </shape>
+    </item>
+
+</layer-list>
