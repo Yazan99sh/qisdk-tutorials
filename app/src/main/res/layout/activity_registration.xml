@@ -16,45 +16,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <include
+            layout="@layout/registration_app_bar_component"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:background="#00BBF1"
-            android:gravity="center_vertical|center_horizontal"
-            android:orientation="horizontal">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.529"
-                    app:srcCompat="@drawable/client_banner" />
-
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:padding="2dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView4"
-                    app:layout_constraintHorizontal_bias="0.007"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/home" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -69,7 +35,7 @@
                 android:shadowDx="4"
                 android:shadowDy="4"
                 android:shadowRadius="1"
-                android:text="@string/extinsions_welcome_message"
+                android:text="@string/enter_you_full_name_and_phone_number"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="35sp"
@@ -80,7 +46,7 @@
                 app:layout_constraintVertical_bias="0.114" />
 
             <LinearLayout
-                android:id="@+id/linearLayout"
+                android:id="@+id/register_form"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
@@ -93,7 +59,7 @@
                 app:layout_constraintVertical_bias="0.136">
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName"
+                    android:id="@+id/user_name_text_field"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -113,7 +79,7 @@
                     android:layout_weight="1" />
 
                 <EditText
-                    android:id="@+id/editTextTextEmailAddress"
+                    android:id="@+id/user_phone_text_field"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -125,14 +91,13 @@
                     android:inputType="phone"
                     android:padding="10dp"
                     android:textColorHint="#000000"
-                    android:textSize="16sp"
-                    />
+                    android:textSize="16sp" />
 
 
             </LinearLayout>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/register"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/papper_background_button"
@@ -143,7 +108,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                app:layout_constraintTop_toBottomOf="@+id/register_form"
                 app:layout_constraintVertical_bias="0.139" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

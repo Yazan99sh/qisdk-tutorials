@@ -71,7 +71,7 @@
                 app:layout_constraintVertical_bias="0.965" />
 
             <LinearLayout
-                android:id="@+id/linearLayout"
+                android:id="@+id/register_form"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"

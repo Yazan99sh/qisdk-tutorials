@@ -13,6 +13,11 @@ import com.aldebaran.qi.sdk.QiSDK
 import com.aldebaran.qi.sdk.RobotLifecycleCallbacks
 import com.aldebaran.qi.sdk.builder.SayBuilder
 import ae.altkamul.papper.R
+import com.aldebaran.qi.Consumer
+import com.aldebaran.qi.sdk.Qi
+import com.aldebaran.qi.sdk.`object`.actuation.Animate
+import com.aldebaran.qi.sdk.builder.AnimateBuilder
+import com.aldebaran.qi.sdk.builder.AnimationBuilder
 
 private const val TAG = "RegistrationRobot"
 
@@ -21,7 +26,7 @@ private const val TAG = "RegistrationRobot"
  */
 internal class RegistrationRobot(private val presenter: RegistrationContract.Presenter) :
     RegistrationContract.Robot, RobotLifecycleCallbacks {
-
+    var qiContexts: QiContext? = null
     override fun register(activity: RegistrationActivity) {
         QiSDK.register(activity, this)
     }
@@ -30,7 +35,28 @@ internal class RegistrationRobot(private val presenter: RegistrationContract.Pre
         QiSDK.unregister(activity, this)
     }
 
+    override fun saySuccessMessageAndDance() {
+        val sentence = qiContexts!!.resources.getString(successMessage())
+        val say = SayBuilder.with(qiContexts)
+            .withText(sentence)
+            .build()
+        say.async().run()
+        val animation = AnimationBuilder.with(qiContexts) // Create the builder with the context.
+            .withResources(R.raw.raise_both_hands_b001) // Set the animation resource.
+            .build()
+        val animate: Animate = AnimateBuilder.with(qiContexts)
+            .withAnimation(animation)
+            .build()
+        val animateFuture = animate.async().run()
+        animateFuture.andThenConsume(
+            Qi.onUiThread(Consumer {
+                presenter.goBackToRegistration()
+            })
+        )
+    }
+
     override fun onRobotFocusGained(qiContext: QiContext) {
+        qiContexts = qiContext
         val sentence = qiContext.resources.getString(introSentenceRes())
         presenter.updateWelcomeMessage(sentence)
         val say = SayBuilder.with(qiContext)
@@ -50,5 +76,10 @@ internal class RegistrationRobot(private val presenter: RegistrationContract.Pre
     @StringRes
     private fun introSentenceRes(): Int {
         return R.string.enter_you_full_name_and_phone_number
+    }
+
+    @StringRes
+    private fun successMessage(): Int {
+        return R.string.registration_success_message
     }
 }
