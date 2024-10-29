@@ -55,6 +55,6 @@ internal class RegistrationRobot(private val presenter: DrawContract.Presenter) 
 
     @StringRes
     private fun introSentenceRes(): Int {
-        return R.string.select_lucki_winners
+        return R.string.select_lucky_winners
     }
 }

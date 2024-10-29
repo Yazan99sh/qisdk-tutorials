@@ -12,6 +12,7 @@ import com.aldebaran.qi.sdk.design.activity.RobotActivity
 import com.aldebaran.qi.sdk.design.activity.conversationstatus.SpeechBarDisplayStrategy
 import ae.altkamul.papper.R
 import ae.altkamul.papper.ui.categories.CategoriesActivity
+import ae.altkamul.papper.ui.draw.DrawActivity
 import ae.altkamul.papper.ui.idle.IdleActivity
 import ae.altkamul.papper.ui.main_menu.MainMenuActivity
 import ae.altkamul.papper.ui.registration.RegistrationActivity
@@ -54,7 +55,8 @@ class SplashScreenActivity : RobotActivity() {
         // IdleActivity
         // WelcomeMessageActivity
         // MainMenuActivity
-        val intent = Intent(this, RegistrationActivity::class.java)
+        // RegistrationActivity
+        val intent = Intent(this, DrawActivity::class.java)
         startActivity(intent)
 
         finish()
