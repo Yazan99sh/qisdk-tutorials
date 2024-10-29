@@ -31,8 +31,8 @@ class DatabaseHelper(context: Context) :
     fun createUsersTable(db: SQLiteDatabase) {
         val TABLE_NAME = DatabaseTableConstant.Users.TABLE_NAME
         val COLUMN_ID = DatabaseTableConstant.Users.COLUMN_ID
-        val COLUMN_NAME = DatabaseTableConstant.Users.COLUMN_ID
-        val COLUMN_PHONE = DatabaseTableConstant.Users.COLUMN_ID
+        val COLUMN_NAME = DatabaseTableConstant.Users.COLUMN_NAME
+        val COLUMN_PHONE = DatabaseTableConstant.Users.COLUMN_PHONE
         val createTableQuery = """
             CREATE TABLE $TABLE_NAME (
                 $COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,

@@ -22,96 +22,19 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <include
+            android:id="@+id/registration_from_component"
+            layout="@layout/registration_form"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
 
-            <TextView
-                android:id="@+id/registration_welcome_message"
-                android:layout_width="720dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:shadowColor="#000000"
-                android:shadowDx="4"
-                android:shadowDy="4"
-                android:shadowRadius="1"
-                android:text="@string/enter_you_full_name_and_phone_number"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="35sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.114" />
-
-            <LinearLayout
-                android:id="@+id/register_form"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:gravity="center_vertical|center_horizontal"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/registration_welcome_message"
-                app:layout_constraintVertical_bias="0.136">
-
-                <EditText
-                    android:id="@+id/user_name_text_field"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/edit_text_background"
-                    android:drawableStart="@drawable/ic_persone"
-                    android:drawablePadding="10dp"
-                    android:focusable="false"
-                    android:hint="Enter your full name"
-                    android:inputType="textPersonName"
-                    android:padding="10dp"
-                    android:textColorHint="#000000"
-                    android:textSize="16sp" />
-
-                <androidx.legacy.widget.Space
-                    android:layout_width="32dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <EditText
-                    android:id="@+id/user_phone_text_field"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/edit_text_background"
-                    android:drawableStart="@drawable/phone"
-                    android:drawablePadding="10dp"
-                    android:focusable="false"
-                    android:hint="Enter your mobile number"
-                    android:inputType="phone"
-                    android:padding="10dp"
-                    android:textColorHint="#000000"
-                    android:textSize="16sp" />
-
-
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/register"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/papper_background_button"
-                android:padding="12dp"
-                android:text="Register"
-                android:textColor="#FFFFFF"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/register_form"
-                app:layout_constraintVertical_bias="0.139" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+        <include
+            android:id="@+id/success_message_component"
+            layout="@layout/registration_success_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

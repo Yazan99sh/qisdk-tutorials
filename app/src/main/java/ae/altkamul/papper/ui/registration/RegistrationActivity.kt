@@ -17,6 +17,7 @@ class RegistrationActivity : RobotActivity(), RegistrationContract.View {
     var textView: TextView? = null
     lateinit var submitButton: Button
     lateinit var registerForm: View
+    lateinit var successMessage: View
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
@@ -28,19 +29,23 @@ class RegistrationActivity : RobotActivity(), RegistrationContract.View {
         robot.register(this)
         this.presenter = presenter
         textView = findViewById(R.id.registration_welcome_message)
-        registerForm = findViewById(R.id.register_form)
+        registerForm = findViewById(R.id.registration_from_component)
+        successMessage = findViewById(R.id.success_message_component)
+        submitButton = findViewById(R.id.register)
+        submitButton.setOnClickListener({
+            submitButtonClicked()
+        })
     }
 
     fun submitButtonClicked() {
-        submitButton = findViewById(R.id.register)
-        submitButton.setOnClickListener({
-            val nameEditTextView = findViewById<EditText>(R.id.user_name_text_field)
-            val phoneNumberEditTextView = findViewById<EditText>(R.id.user_phone_text_field)
-            val name = nameEditTextView.text.toString()
-            val phoneNumber = phoneNumberEditTextView.text.toString()
-            // register
-            presenter.registerUser(User(name, phoneNumber))
-        })
+        val nameEditTextView = findViewById<EditText>(R.id.user_name_text_field)
+        val phoneNumberEditTextView = findViewById<EditText>(R.id.user_phone_text_field)
+        val name = nameEditTextView.text.toString()
+        val phoneNumber = phoneNumberEditTextView.text.toString()
+        // register
+        presenter.registerUser(User(name, phoneNumber))
+        nameEditTextView.text.clear()
+        phoneNumberEditTextView.text.clear()
     }
 
     override fun updateWelcomeMessage(sentence: String) {
@@ -51,7 +56,8 @@ class RegistrationActivity : RobotActivity(), RegistrationContract.View {
 
     override fun changeToSuccess() {
         runOnUiThread {
-            setContentView(R.layout.registration_success_state)
+            registerForm.visibility = View.GONE
+            successMessage.visibility = View.VISIBLE
         }
     }
 
@@ -60,6 +66,9 @@ class RegistrationActivity : RobotActivity(), RegistrationContract.View {
     }
 
     override fun goBackToRegistration() {
-        setContentView(R.layout.activity_registration)
+        runOnUiThread {
+            registerForm.visibility = View.VISIBLE
+            successMessage.visibility = View.GONE
+        }
     }
 }

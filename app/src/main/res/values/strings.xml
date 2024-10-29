@@ -101,7 +101,8 @@
     <string name="extinsions_welcome_message"> Please select on the tablet which extension you want me to show you</string>
     <string name="enter_you_full_name_and_phone_number">Enter Your Full Name And Mobile Number</string>
     <string name="mic_icon_description">Mic Icon</string>
-    <string name="registration_success_message">thank you for registering get ready for your chance to be selected in the lucky draw </string>
+    <string name="registration_success_message">Thank you for registering get ready for your chance to be selected in the lucky draw </string>
+    <string name="select_lucki_winners">Select Lucky Winners </string>
 
 
 </resources>

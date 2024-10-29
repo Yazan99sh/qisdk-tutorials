@@ -16,6 +16,7 @@ import ae.altkamul.papper.R
 import com.aldebaran.qi.Consumer
 import com.aldebaran.qi.sdk.Qi
 import com.aldebaran.qi.sdk.`object`.actuation.Animate
+import com.aldebaran.qi.sdk.`object`.conversation.Say
 import com.aldebaran.qi.sdk.builder.AnimateBuilder
 import com.aldebaran.qi.sdk.builder.AnimationBuilder
 
@@ -27,6 +28,8 @@ private const val TAG = "RegistrationRobot"
 internal class RegistrationRobot(private val presenter: RegistrationContract.Presenter) :
     RegistrationContract.Robot, RobotLifecycleCallbacks {
     var qiContexts: QiContext? = null
+    var saySuccessMessage: Say? = null
+    var danceOnMessageSuccess: Animate? = null
     override fun register(activity: RegistrationActivity) {
         QiSDK.register(activity, this)
     }
@@ -36,27 +39,27 @@ internal class RegistrationRobot(private val presenter: RegistrationContract.Pre
     }
 
     override fun saySuccessMessageAndDance() {
-        val sentence = qiContexts!!.resources.getString(successMessage())
-        val say = SayBuilder.with(qiContexts)
-            .withText(sentence)
-            .build()
-        say.async().run()
-        val animation = AnimationBuilder.with(qiContexts) // Create the builder with the context.
-            .withResources(R.raw.raise_both_hands_b001) // Set the animation resource.
-            .build()
-        val animate: Animate = AnimateBuilder.with(qiContexts)
-            .withAnimation(animation)
-            .build()
-        val animateFuture = animate.async().run()
-        animateFuture.andThenConsume(
-            Qi.onUiThread(Consumer {
-                presenter.goBackToRegistration()
-            })
-        )
+        val sayFuture = saySuccessMessage?.async()?.run()
+        sayFuture?.andThenConsume(Consumer {
+            Thread.sleep(1000)
+            val animateFuture = danceOnMessageSuccess?.async()?.run()
+            animateFuture?.andThenConsume(
+                Qi.onUiThread(Consumer {
+                    presenter.goBackToRegistration()
+                })
+            )
+        })
     }
 
     override fun onRobotFocusGained(qiContext: QiContext) {
         qiContexts = qiContext
+        val sentence1 = qiContext.resources.getString(successMessage())
+        saySuccessMessage = SayBuilder.with(qiContext)
+            .withText(sentence1)
+            .build()
+        val animation = AnimationBuilder.with(qiContext)
+            .withResources(R.raw.elephant_a001).build()
+        danceOnMessageSuccess = AnimateBuilder.with(qiContext).withAnimation(animation).build()
         val sentence = qiContext.resources.getString(introSentenceRes())
         presenter.updateWelcomeMessage(sentence)
         val say = SayBuilder.with(qiContext)
