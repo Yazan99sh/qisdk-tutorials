@@ -29,12 +29,12 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true" />
 
-<!--        <include-->
-<!--            android:id="@+id/success_message_component"-->
-<!--            layout="@layout/registration_success_state"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_centerInParent="true"-->
-<!--            android:visibility="gone" />-->
+        <include
+            android:id="@+id/winners_title"
+            layout="@layout/winners_component"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

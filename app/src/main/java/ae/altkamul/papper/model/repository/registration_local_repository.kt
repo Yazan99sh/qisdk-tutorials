@@ -21,7 +21,11 @@ class RegistrationLocalRepository private constructor(context: Context) {
         }
     }
 
-    fun registerUser(user: User) : Boolean {
-       return usersDao.insertUser(user)
+    fun registerUser(user: User): Boolean {
+        return usersDao.insertUser(user)
+    }
+
+    fun getUsers(): List<User> {
+        return usersDao.getUsers()
     }
 }

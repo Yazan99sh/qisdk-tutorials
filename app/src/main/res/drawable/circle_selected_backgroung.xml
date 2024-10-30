@@ -1,0 +1,20 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Shadow layer -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#000000" /> <!-- Semi-transparent black for shadow -->
+            <size android:width="75dp" android:height="75dp" />
+        </shape>
+    </item>
+
+    <!-- Main circle layer -->
+    <item android:bottom="4dp" android:right="4dp">
+        <shape android:shape="oval">
+            <solid android:color="#FFFFFF" /> <!-- White color for the main circle -->
+            <size android:width="75dp" android:height="75dp" />
+            <stroke android:width="1dp" android:color="#000000" /> <!-- Black border around the circle -->
+        </shape>
+    </item>
+
+</layer-list>

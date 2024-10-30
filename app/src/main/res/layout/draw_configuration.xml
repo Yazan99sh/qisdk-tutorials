@@ -57,6 +57,7 @@
 
             <!-- Radio Buttons (Online/Offline) -->
             <RadioGroup
+                android:id="@+id/draw_type_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -64,11 +65,12 @@
 
                 <RadioButton
                     android:id="@+id/radio_online"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="125dp"
+                    android:layout_height="match_parent"
                     android:text="Online"
                     android:background="@drawable/radio_background"
                     android:padding="12dp"
+                    android:buttonTint="#00BBF1"
                     android:textColor="#000000" />
 
                 <RadioButton
@@ -79,6 +81,7 @@
                     android:background="@drawable/radio_background"
                     android:padding="12dp"
                     android:textColor="#000000"
+                    android:buttonTint="#00BBF1"
                     android:layout_marginStart="16dp" />
             </RadioGroup>
         </LinearLayout>
