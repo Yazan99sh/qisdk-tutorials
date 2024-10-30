@@ -1,17 +1,26 @@
 package ae.altkamul.papper.ui.draw
 
 import ae.altkamul.papper.R
-import ae.altkamul.papper.database.DatabaseHelper
-import ae.altkamul.papper.database.dao.UsersDao
+import ae.altkamul.papper.database.dao.WinnersDao
 import ae.altkamul.papper.database.data_model.User
+import ae.altkamul.papper.database.data_model.Winner
 import ae.altkamul.papper.model.repository.RegistrationLocalRepository
+import ae.altkamul.papper.ui.registration.RegistrationContract
+import ae.altkamul.papper.ui.registration.RegistrationPresenter
+import ae.altkamul.papper.ui.registration.RegistrationRobot
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
-import kotlinx.android.synthetic.main.layout_robot_output_view.view.*
+import com.aldebaran.qi.sdk.design.activity.RobotActivity
+import com.aldebaran.qi.sdk.design.activity.conversationstatus.SpeechBarDisplayStrategy
+import java.util.*
 
-class DrawActivity : AppCompatActivity() {
+class DrawActivity : RobotActivity(), DrawContract.View {
+    private lateinit var presenter: DrawContract.Presenter
+    private lateinit var robot: DrawContract.Robot
+    private lateinit var router: DrawContract.Router
+
     var selectedTextView: TextView? = null
     var selectedRadioButton: RadioButton? = null
     lateinit var gridLayout: GridLayout
@@ -22,6 +31,13 @@ class DrawActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_draw)
+        setSpeechBarDisplayStrategy(SpeechBarDisplayStrategy.OVERLAY)
+        val presenter = DrawPresenter()
+        robot = DrawRobot(presenter)
+        presenter.init(this)
+        presenter.bind(this)
+        robot.register(this)
+        this.presenter = presenter
         gridLayout = findViewById<GridLayout>(R.id.circle_grid)
         initGridView(this)
         val radioGroup: RadioGroup = findViewById(R.id.draw_type_radio_button)
@@ -48,8 +64,17 @@ class DrawActivity : AppCompatActivity() {
                 val users = getUsers()
                 if (users.isNotEmpty()) {
                     val winners = users.shuffled().take(selectedWinnersCount!!.toInt())
+                    var i: Int = 0;
                     for (winner in winners) {
-                        println(winner.name)
+                        presenter.addWinnerToDatabase(
+                            Winner(
+                                null,
+                                winner.id!!,
+                                winner.name,
+                                i.toString(),
+                                Date().time.toString()
+                            )
+                        )
                     }
                 }
             } else {
@@ -60,7 +85,7 @@ class DrawActivity : AppCompatActivity() {
 
     fun initGridView(context: Context) {
         gridLayout.removeAllViews()
-        val userDao = UsersDao(this)
+        val userDao = WinnersDao(this)
         for (i in 1..10) {
             val textView = TextView(this).apply {
                 text = i.toString()
@@ -93,5 +118,9 @@ class DrawActivity : AppCompatActivity() {
             // Call API to get users
         }
         return registrationLocalRepository.getUsers()
+    }
+
+    override fun updateWelcomeMessage(sentence: String) {
+        TODO("Not yet implemented")
     }
 }

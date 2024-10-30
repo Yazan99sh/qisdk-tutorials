@@ -43,7 +43,7 @@ class RegistrationActivity : RobotActivity(), RegistrationContract.View {
         val name = nameEditTextView.text.toString()
         val phoneNumber = phoneNumberEditTextView.text.toString()
         // register
-        presenter.registerUser(User(name, phoneNumber))
+        presenter.registerUser(User(null, name, phoneNumber))
         nameEditTextView.text.clear()
         phoneNumberEditTextView.text.clear()
     }

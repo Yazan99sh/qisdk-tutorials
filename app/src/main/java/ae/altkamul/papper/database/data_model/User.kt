@@ -3,7 +3,7 @@ package ae.altkamul.papper.database.data_model
 import ae.altkamul.papper.database.constant.DatabaseTableConstant
 import android.content.ContentValues
 
-data class User(val name: String, val phone: String) {
+data class User(val id: Int?, val name: String, val phone: String) {
     fun toContentValues(): ContentValues {
         val values = ContentValues()
         values.put(DatabaseTableConstant.Users.COLUMN_NAME, name)

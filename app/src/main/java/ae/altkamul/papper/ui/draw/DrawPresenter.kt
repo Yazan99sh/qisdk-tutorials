@@ -1,6 +1,7 @@
 package ae.altkamul.papper.ui.draw
 
 import ae.altkamul.papper.database.data_model.User
+import ae.altkamul.papper.database.data_model.Winner
 import ae.altkamul.papper.model.repository.RegistrationLocalRepository
 import android.content.Context
 
@@ -24,5 +25,16 @@ internal class DrawPresenter : DrawContract.Presenter {
 
     override fun updateWelcomeMessage(sentence: String) {
         view?.updateWelcomeMessage(sentence)
+    }
+    override fun addWinnerToDatabase(winner: Winner) {
+        val success = registrationLocalRepository?.addWinner(winner)
+        if (success == true) {
+            // let the robot dance .
+            // go back to form .
+        } else {
+            // show toast message .
+            // let the robot say the failure message .
+            // let the robot cry .
+        }
     }
 }

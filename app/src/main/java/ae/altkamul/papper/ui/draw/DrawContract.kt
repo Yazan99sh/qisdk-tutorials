@@ -2,6 +2,7 @@
 package ae.altkamul.papper.ui.draw
 
 import ae.altkamul.papper.database.data_model.User
+import ae.altkamul.papper.database.data_model.Winner
 import android.content.Context
 
 /**
@@ -18,6 +19,7 @@ internal interface DrawContract {
         fun bind(view: View)
         fun unbind()
         fun updateWelcomeMessage(sentence: String)
+        fun addWinnerToDatabase(winner: Winner)
     }
 
     interface Robot {

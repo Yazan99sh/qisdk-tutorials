@@ -27,7 +27,7 @@ class UsersDao(context: Context) {
                 cursor.getString(cursor.getColumnIndexOrThrow(DatabaseTableConstant.Users.COLUMN_NAME))
             val phone =
                 cursor.getString(cursor.getColumnIndexOrThrow(DatabaseTableConstant.Users.COLUMN_PHONE))
-            users.add(User(name, phone))
+            users.add(User(id, name, phone))
         }
         cursor.close()
         return users

@@ -24,7 +24,7 @@ private const val TAG = "RegistrationRobot"
 /**
  * The robot for the tutorial categories.
  */
-internal class RegistrationRobot(private val presenter: DrawContract.Presenter) :
+internal class DrawRobot(private val presenter: DrawContract.Presenter) :
     DrawContract.Robot, RobotLifecycleCallbacks {
     var qiContexts: QiContext? = null
     override fun register(activity: DrawActivity) {

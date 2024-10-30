@@ -1,13 +1,16 @@
 package ae.altkamul.papper.model.repository
 
 import ae.altkamul.papper.database.dao.UsersDao
+import ae.altkamul.papper.database.dao.WinnersDao
 import ae.altkamul.papper.database.data_model.User
+import ae.altkamul.papper.database.data_model.Winner
 import android.content.Context
 
 class RegistrationLocalRepository private constructor(context: Context) {
 
     // Initialize your DAO or database-related objects here
     private val usersDao: UsersDao = UsersDao(context)
+    private val winnersDao: WinnersDao = WinnersDao(context)
 
     // Singleton instance
     companion object {
@@ -28,4 +31,8 @@ class RegistrationLocalRepository private constructor(context: Context) {
     fun getUsers(): List<User> {
         return usersDao.getUsers()
     }
+    fun addWinner(winner: Winner): Boolean {
+        return winnersDao.insertWinner(winner)
+    }
+
 }
