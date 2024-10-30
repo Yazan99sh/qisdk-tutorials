@@ -17,6 +17,7 @@ interface DatabaseTableConstant {
             const val COLUMN_NAME = "name"
             const val COLUMN_RANK = "rank"
             const val COLUMN_DATE = "date"
+            const val COLUMN_IS_ONLINE = "isOnline"
         }
     }
 }

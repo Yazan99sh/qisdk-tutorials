@@ -72,7 +72,8 @@ class DrawActivity : RobotActivity(), DrawContract.View {
                                 winner.id!!,
                                 winner.name,
                                 i.toString(),
-                                Date().time.toString()
+                                Date().time.toString(),
+                                isOnline!!
                             )
                         )
                     }

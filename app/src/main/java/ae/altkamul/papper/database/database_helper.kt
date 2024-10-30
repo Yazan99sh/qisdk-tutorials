@@ -58,6 +58,7 @@ class DatabaseHelper(context: Context) :
         val COLUMN_NAME = DatabaseTableConstant.Winners.COLUMN_NAME
         val COLUMN_RANK = DatabaseTableConstant.Winners.COLUMN_RANK
         val COLUMN_DATE = DatabaseTableConstant.Winners.COLUMN_DATE
+        val COLUMN_IS_ONLINE = DatabaseTableConstant.Winners.COLUMN_IS_ONLINE
         val createTableQuery = """
             CREATE TABLE $TABLE_NAME (
                 $COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -65,6 +66,7 @@ class DatabaseHelper(context: Context) :
                 $COLUMN_NAME TEXT,
                 $COLUMN_RANK TEXT,
                 $COLUMN_DATE TEXT,
+                $COLUMN_IS_ONLINE BOOLEAN DEFAULT 0,
                 FOREIGN KEY($COLUMN_USER_ID) REFERENCES ${DatabaseTableConstant.Users.TABLE_NAME}(${DatabaseTableConstant.Users.COLUMN_ID})
             )
         """.trimIndent()
